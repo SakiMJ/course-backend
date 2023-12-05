@@ -2,37 +2,20 @@ const { Sequelize } = require('sequelize');
 
 const initModels = require('../models/init-models');
 
-const sequelize = new Sequelize('test', 'root', 'xdclass.net', {
+const sequelize = new Sequelize('xdclass-edu', 'root', 'xdclass.net168', {
 	host: '121.41.166.120',
 	dialect: 'mysql',
+	timezone: '+08:00',
 });
 
 const models = initModels(sequelize);
 
-models.Student.hasOne(models.Desk, {
-	foreignKey: 'student_id',
-	as: 'deskDetail',
-});
-models.Desk.belongsTo(models.Student, {
-	foreignKey: 'student_id',
-	as: 'studentDetail',
-});
-
-models.Class.hasMany(models.Student, {
-	foreignKey: 'class_id',
-	as: 'studentList',
-});
-models.Student.belongsTo(models.Class, {
-	foreignKey: 'class_id',
-	as: 'classDetail',
-});
-
 (async function () {
 	try {
 		await sequelize.authenticate();
-		console.log('Connection has been established successfully.');
+		console.log('数据库连接成功 successfully.');
 	} catch (error) {
-		console.error('Unable to connect to the database:', error);
+		console.error('数据库连接失败 database:', error);
 	}
 })();
 
