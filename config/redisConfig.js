@@ -13,6 +13,12 @@ const redisconfig = {
 	get: (key) => {
 		return redis.get(key);
 	},
+	del: (key) => {
+		redis.del(key);
+	},
+	exists: (key) => {
+		return redis.exists(key);
+	},
 };
 
 module.exports = redisconfig;
