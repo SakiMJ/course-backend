@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('duration_record', {
+  return sequelize.define('DurationRecord', {
     id: {
       autoIncrement: true,
       type: DataTypes.BIGINT,

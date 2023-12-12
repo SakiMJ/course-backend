@@ -1,7 +1,8 @@
-const NotifyService = require('../service/NotifyService');
-const GetUserInfoTool = require('../utils/GetUserInfoTool');
-const SecretTool = require('../utils/SecretTool');
-const RandomTool = require('../utils/RandomTool');
+const NotifyService = require('../service/NotifyService.js');
+const GetUserInfoTool = require('../utils/GetUserInfoTool.js');
+const SecretTool = require('../utils/SecretTool.js');
+const RandomTool = require('../utils/RandomTool.js');
+
 const NotifyController = {
 	captcha: (req, res) => {
 		let { type } = req.query;

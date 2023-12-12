@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('favorite', {
+  return sequelize.define('Favorite', {
     id: {
       autoIncrement: true,
       type: DataTypes.BIGINT.UNSIGNED,

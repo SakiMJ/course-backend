@@ -17,15 +17,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
 	jwt({ secret: jwtSecretKey, algorithms: ['HS256'] }).unless({
 		path: [
+			/^\/api\/notify\/v1/, //验证码
 			/^\/api\/user\/v1\/register/, //注册
 			/^\/api\/user\/v1\/login/, //登录
-			/^\/api\/notify\/v1/,
 		],
 	})
 );
-const notifyRouter = require('./router/notify');
+//通知相关的接口
+const notifyRouter = require('./router/notify.js');
 app.use('/api/notify/v1', notifyRouter);
 
+//用户相关的接口
+const userRouter = require('./router/user.js');
+app.use('/api/user/v1', userRouter);
+
+//错误中间件
 app.use((err, req, res, next) => {
 	if (err.name === 'UnauthorizedError') {
 		return res.send({ code: -1, data: null, msg: '请先登录！' });

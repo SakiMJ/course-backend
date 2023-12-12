@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('play_record', {
+  return sequelize.define('PlayRecord', {
     id: {
       autoIncrement: true,
       type: DataTypes.BIGINT,
