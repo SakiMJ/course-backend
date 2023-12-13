@@ -1,5 +1,6 @@
 const md5 = require('blueimp-md5');
 const jwt = require('jsonwebtoken');
+const sha1 = require('sha1');
 const { jwtSecretKey } = require('../config/jwtSecretKey');
 class SecretTool {
 	//md5加密
@@ -13,6 +14,9 @@ class SecretTool {
 	//jwt解密token
 	static jwtVerify(query) {
 		return jwt.verify(query, jwtSecretKey);
+	}
+	static sha1(query) {
+		return sha1(query);
 	}
 }
 module.exports = SecretTool;
