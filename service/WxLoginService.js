@@ -2,7 +2,7 @@ const SecretTool = require('../utils/SecretTool.js');
 const { getQR } = require('../config/wechatLogin');
 const redisconfig = require('../config/redisConfig.js');
 const BackCode = require('../utils/BackCode.js');
-
+const WxDataTool = require('../utils/WxDataTool.js');
 const WxLoginService = {
 	wechat_insert: (signature, timestamp, nonce, echostr) => {
 		let token = 'testxdclass';
@@ -24,6 +24,12 @@ const WxLoginService = {
 				ticket,
 			},
 		});
+	},
+	wechat_message: async (req) => {
+		let xmlData = await WxDataTool.getXMLStr(req);
+		let objectData = await WxDataTool.getObject(xmlData);
+		let lastData = WxDataTool.getLastData(objectData.xml);
+		return '成功';
 	},
 };
 
